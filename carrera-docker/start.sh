@@ -1,5 +1,5 @@
 
-sh /root/zookeeper-3.4.10/bin/zkServer.sh start
+sh /root/apache-zookeeper-3.6.2-bin/bin/zkServer.sh start
 cd /root/console && sh ./control.sh start
 
 while ! nc -z localhost 8080; do   

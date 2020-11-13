@@ -15,17 +15,17 @@ WORKDIR ${HOME_DIR}
 RUN yum install -y java-1.8.0-openjdk java-1.8.0-openjdk-devel unzip gettext nmap-ncat openssl wget telnet\
   && yum clean all -y
 
-RUN curl http://mirror.bit.edu.cn/apache/tomcat/tomcat-9/v9.0.14/bin/apache-tomcat-9.0.14.zip -o tomcat.zip \
+RUN curl https://mirrors.cnnic.cn/apache/tomcat/tomcat-9/v9.0.39/bin/apache-tomcat-9.0.39.zip -o tomcat.zip \
   && unzip tomcat.zip \ 
-  && mv apache-tomcat-9.0.14 tomcat \
+  && mv apache-tomcat-9.0.39 tomcat \
   && rm tomcat.zip \ 
   && chmod +x tomcat/bin/*.sh
 
-RUN curl http://mirrors.hust.edu.cn/apache/zookeeper/zookeeper-3.4.10/zookeeper-3.4.10.tar.gz -o zookeeper-3.4.10.tar.gz \
-  && tar xzvf zookeeper-3.4.10.tar.gz \
-  && rm zookeeper-3.4.10.tar.gz \ 
-  && cp zookeeper-3.4.10/conf/zoo_sample.cfg zookeeper-3.4.10/conf/zoo.cfg 
-
+RUN curl https://mirrors.cnnic.cn/apache/zookeeper/zookeeper-3.6.2/apache-zookeeper-3.6.2-bin.tar.gz -o zookeeper-3.6.2.tar.gz \
+  && tar xzvf zookeeper-3.6.2.tar.gz \
+  && rm zookeeper-3.6.2.tar.gz \ 
+  && cp apache-zookeeper-3.6.2-bin/conf/zoo_sample.cfg apache-zookeeper-3.6.2-bin/conf/zoo.cfg \ 
+  && echo "admin.serverPort=8888" >> apache-zookeeper-3.6.2-bin/conf/zoo.cfg
 RUN mkdir -p \
  /root/logs/rocketmqlogs \
  /root/store \
